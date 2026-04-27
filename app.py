@@ -109,7 +109,9 @@ class Resolution(db.Model):
             'is_public': self.is_public,
         }
 
-
+@app.route("/")
+def home():
+    return "Backend is running 🚀"
 class CountryNote(db.Model):
     __tablename__ = 'country_notes'
     id           = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
@@ -588,6 +590,3 @@ if __name__ == '__main__':
     app.run(debug=True, port=5001, host='0.0.0.0')
 port = int(os.environ.get("PORT", 5001))
 app.run(host="0.0.0.0", port=port)
-@app.route("/")
-def home():
-    return "Backend is running 🚀"
